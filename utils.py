@@ -20,8 +20,8 @@ def weighted_accuracy(ground_truth, prediction):
     return score / n
 
 def sum_of_chroma(chroma_feat, start=None, end=None):
-    start = 0 if start == None else start
-    end = chroma_feat.shape[1] if end == None else end
+    start = 0 if (start == None or start < 0) else start
+    end = chroma_feat.shape[1] if (end == None or end < 0) else end
     chroma_feat_t = np.transpose(chroma_feat)
     segment = chroma_feat_t[start:end+1]
     return sum(segment)
